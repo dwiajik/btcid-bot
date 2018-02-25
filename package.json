@@ -1,0 +1,15 @@
+{
+  "name": "btcid-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dwiajik/btcid-bot.git",
+  "author": "Dwi Aji Kurniawan <dwi.aji.kurniawan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "db:init": "node ./database/dynamodb/tables",
+    "db:reset": "node ./database/dynamodb/tables/reset"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.202.0"
+  }
+}
