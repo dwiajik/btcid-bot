@@ -6,8 +6,8 @@
   "author": "Dwi Aji Kurniawan <dwi.aji.kurniawan@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "db:init": "node ./database/dynamodb/tables",
-    "db:reset": "node ./database/dynamodb/tables/reset"
+    "db:init": "node ./database/dynamodb/migrate",
+    "db:reset": "node ./database/dynamodb/reset"
   },
   "dependencies": {
     "aws-sdk": "^2.202.0"

@@ -1,4 +1,7 @@
 const AWS = require("aws-sdk");
+const fs = require("fs");
+
+const migrationDir = `${__dirname}/tables`;
 
 AWS.config.update({
   region: process.env.AWS_REGION,
@@ -7,10 +10,8 @@ AWS.config.update({
 
 const dynamodb = new AWS.DynamoDB();
 
-var tables = [
-  'prices',
-  'transactions'
-];
+const tables = fs.readdirSync(migrationDir)
+  .map(file => file.substring(0, file.indexOf('.json')));
 
 tables.forEach(table => {
   dynamodb.deleteTable({ TableName: table }, function(err, data) {

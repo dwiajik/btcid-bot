@@ -1,9 +1,10 @@
 const AWS = require("aws-sdk");
+const fs = require("fs");
 
-const tables = [
-  require("./prices").params,
-  require("./transactions").params,
-];
+const migrationDir = `${__dirname}/tables`;
+
+const tables = fs.readdirSync(migrationDir)
+  .map(file => JSON.parse(fs.readFileSync(`${migrationDir}/${file}`, 'utf8')));
 
 AWS.config.update({
   region: process.env.AWS_REGION,
